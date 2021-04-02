@@ -1,3 +1,16 @@
+## run the   project:
+
+### Back end:
+```
+npm run dev
+```
+
+### Front end:
+```
+npm start
+```
+
+
 
 ## The reason why your bind button does not manage the
 form page open and close"
