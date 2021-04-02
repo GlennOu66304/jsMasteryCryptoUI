@@ -1,5 +1,10 @@
 ## run the   project:
 
+### npm install the project:
+```
+npm install
+```
+
 ### Back end:
 ```
 npm run server
