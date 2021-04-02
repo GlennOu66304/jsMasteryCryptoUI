@@ -2,7 +2,7 @@
 
 ### Back end:
 ```
-npm run dev
+npm run server
 ```
 
 ### Front end:
