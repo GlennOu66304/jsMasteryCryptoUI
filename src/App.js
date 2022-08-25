@@ -4,7 +4,7 @@ import Tasks from './components/Tasks';
 import Footer from './components/Footer';
 import AddTask from './components/AddTask';
 import About from './components/About';
-import './App.css';
+
 import {BrowserRouter as Router, Route}from 'react-router-dom'
 
 
@@ -94,32 +94,43 @@ const deleteTask = async (id)=>{
   }
 
   return (
-    
+    // router bracket the all route
    <Router>
   <div className="container">
-    
+    {/* header */}
     <Header onAdd={() => setShowAddTask(!showAddTask)}
     showAdd={showAddTask}
     />
 
+{/* home page start */}
     <Route 
     path='/'
     exact
+    
     render={(props) =>(
     <>
+    {/* compoent start */}
+    {/* add task section */}
     { showAddTask && <AddTask onAdd={addTask} />}
-   
+   {/* task's length decide if show item */}
     {tasks.length > 0 ? (<Tasks tasks={tasks} 
     onDelete={deleteTask} 
     onToggle={toggleReminder}/>) : ("No task to show")}
-  
+  {/* compoent end */}
     </>
+    
     )}
     />
+{/* homepage end */}
+
+    {/* about page */}
     <Route path='/about' component={About} />
+    {/* footer section */}
     <Footer />
+
     </div>
     </Router>
+    // router end
   )
  }
   
