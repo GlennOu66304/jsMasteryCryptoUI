@@ -14,6 +14,16 @@ React + MetaMask + ehters(fetch,ajax,axios)
 
 
 
+Check the Ethereum Scan address
+
+[0x225626b64e9077786d5a0580b96f8bc374cba6deb79d124f97f5e4f2e135c4b8](https://rinkeby.etherscan.io/tx/0x225626b64e9077786d5a0580b96f8bc374cba6deb79d124f97f5e4f2e135c4b8)
+
+
+
+Check the NFT Item
+
+[0xc5d404183cb9de6a14eccb849f44a862a43c2c05/13](https://testnets.opensea.io/assets/rinkeby/0xc5d404183cb9de6a14eccb849f44a862a43c2c05/13)
+
 ## run the   project:
 
 ### npm install the project:

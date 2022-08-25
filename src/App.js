@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 // contract
 import contract from './contracts/NFTCollectible.json'
+import { ethers } from 'ethers';
 import './App.css'
+
+// const { ethers } = require('ethers');
 // contract address
 const contractAddress = "0xc5d404183cb9De6a14eccb849f44A862a43c2C05"
 // abi
-const abt = contract.abi
+const abi = contract.abi
 function App() {
   const [currentAccount, setCurrentAccount] = useState(null);
   const checkWalletIsConnected = async () => {
@@ -33,7 +36,36 @@ function App() {
 
   const connectWalletHandler = () => { }
 
-  const mintNftHandler = () => { }
+  const mintNftHandler = async () => {
+    try {
+      const { ethereum } = window;
+      // How to Mint an NFT from Code
+      // https://docs.alchemy.com/docs/how-to-mint-an-nft-from-code
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum,"any")
+        // it is signer not singer
+        const signer = provider.getSigner();
+        const nftContract = new ethers.Contract(contractAddress, abi, signer)
+        console.log("initialize payment")
+        // start mint
+        let nftTxn = await nftContract.mintNFTs(1, { value: ethers.utils.parseEther("0.01") });
+        // during mint
+        console.log("Mining... Please wait")
+        // mint success
+        await nftTxn.wait()
+        console.log(`Mined,see transaction:https://rinkeby.etherscan.io/tx/${nftTxn.hash}`)
+
+      }
+      else {
+        console.log("ethereum objext does not exit")
+      }
+
+      // mint failed
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
 
   const connectWalletButton = () => {
     return (
