@@ -2,6 +2,13 @@
 
 React + MetaMask + ehters(fetch,ajax,axios)
 
+```
+## run the project
+yarn start
+```
+
+
+
 ## Feature highlight
 
 1.Mint the NFT
@@ -23,6 +30,10 @@ Check the Ethereum Scan address
 Check the NFT Item
 
 [0xc5d404183cb9de6a14eccb849f44a862a43c2c05/13](https://testnets.opensea.io/assets/rinkeby/0xc5d404183cb9de6a14eccb849f44a862a43c2c05/13)
+
+
+
+[Tutorial: Building a web3 frontend with React](https://medium.com/scrappy-squirrels/tutorial-building-a-web3-frontend-with-react-e0a87ea3bad)
 
 ## run the   project:
 
