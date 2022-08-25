@@ -1,3 +1,19 @@
+## NFT Front End Tech Stack:
+
+React + MetaMask + ehters(fetch,ajax,axios)
+
+## Feature highlight
+
+1.Mint the NFT
+
+2.NFT balance on single account Check
+
+3.Deposit NFT
+
+4.Withdraw NFT 
+
+
+
 ## run the   project:
 
 ### npm install the project:
@@ -22,7 +38,7 @@ form page open and close"
 Go to the button.js, add the onClick eventlistener
 ```
 <button className='btn' onClick = {onClick} style={{backgroundColor:color} } >{text}</button>   
-``` 
+```
 [作为prop传递的onClick方法没有执行](https://www.5axxw.com/questions/content/mrbu1v)   
 ## use state
 ```
