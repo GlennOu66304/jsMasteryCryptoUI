@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 // contract
-import contract from './contracts/NFTCollectible.json'
-import { ethers } from 'ethers';
 import './App.css'
+import { TransactionsContext } from './context/Transactions';
 
 // const { ethers } = require('ethers');
 // contract address
-const contractAddress = "0xc5d404183cb9De6a14eccb849f44A862a43c2C05"
+// const contractAddress = "0xc5d404183cb9De6a14eccb849f44A862a43c2C05"
 // abi
-const abi = contract.abi
+// const abi = contract.abi
 function App() {
   const [currentAccount, setCurrentAccount] = useState(null);
   const checkWalletIsConnected = async () => {
@@ -42,7 +41,7 @@ function App() {
       // How to Mint an NFT from Code
       // https://docs.alchemy.com/docs/how-to-mint-an-nft-from-code
       if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum,"any")
+        const provider = new ethers.providers.Web3Provider(ethereum, "any")
         // it is signer not singer
         const signer = provider.getSigner();
         const nftContract = new ethers.Contract(contractAddress, abi, signer)
@@ -83,16 +82,20 @@ function App() {
     )
   }
 
-  useEffect(() => {
-    checkWalletIsConnected();
-  }, [])
+  // useEffect(() => {
+  //   checkWalletIsConnected();
+  // }, [])
 
+  const text = useContext(TransactionsContext)
+  console.log(text)
   return (
     <div className='main-app'>
+
       <h1>Scrappy Squirrels Tutorial</h1>
       <div>
         {/* based on the metamask wallet connect to change the button type */}
-        {currentAccount ? mintNftButton() : connectWalletButton()}
+        {/* {currentAccount ? mintNftButton() : connectWalletButton()} */}
+        {connectWalletButton()}
       </div>
     </div>
   )

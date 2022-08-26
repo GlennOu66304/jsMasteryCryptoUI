@@ -1,13 +1,19 @@
 ## NFT Front End Tech Stack:
 
-React + MetaMask + ehters(fetch,ajax,axios)
+React + Tailwand css + react icon+ context+ MetaMask + ehters(fetch,ajax,axios)
 
 ```
 ## run the project
 yarn start
 ```
 
+Context---> tailwand --> other
 
+
+
+Component---> relationship between component --> props -->
+
+get the logic of code 
 
 ## Feature highlight
 
