@@ -1,7 +1,7 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import './App.css'
-import { TransactionsContext, handleChange } from './context/Transactions';
-// import Form from './components/Form'
+import { TransactionsContext } from './context/Transactions';
+// import Welcome from './components/Welcome'
 
 
 
@@ -48,30 +48,74 @@ function App() {
 
   const { connectWallet, currentAccount } = useContext(TransactionsContext)
 
-  const Input = ({ placeholder, name, type, value, handleChange }) => (
-    <input placeholder={placeholder}
-      type={type}
-      step="0.0001"
-      value={value}
-      // onChange={(e) => handleChange(e, name)}
-      className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
-    />
-  )
+  const Form = () => {
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log(name, email)
+    }
+    return (
+      <div>
+        <form onSubmit={handleSubmit} >
+          <div className="form-group">
+            <label htmlFor="nameImput" className='form-label inline-block mb-2 text-gray-700'>Name</label>
+            <input type="text" name="name" value={name} onChange={(e) => {
+              setName(e.target.value)
+            }} className="form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="nameImput" placeholder="Name" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="emailImput" className='form-label inline-block mb-2 text-gray-700'>Email</label>
+            <input name="email" type="email" value={email} onChange={(e) => {
+              setEmail(e.target.value)
+            }} className="form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="emailImput" placeholder="email@domain.com" />
+          </div>
+          <input type="submit" value="Submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" />
+        </form>
+      </div>
+    )
+  }
+
 
   return (
-    <div className='main-app'>
+    <div className='min-h-screen'>
+      <h1>Send ETH To Your Friend!</h1>
 
-      <h1>Scrappy Squirrels Tutorial</h1>
-      <div>
+      <div >
         {/* based on the metamask wallet connect to change the button type */}
         {currentAccount ? null : connectWalletButton()}
       </div>
-      <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-        <Input placeholder="Address To" name="addressTo" type="text" handleChange={() => { }} />
-        <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={() => { }} />
-        <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={() => { }} />
-        <Input placeholder="Enter Message" name="message" type="text" handleChange={() => { }} />
-      </div>
+      <Form />
+
 
     </div>
   )
