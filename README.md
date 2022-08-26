@@ -1,5 +1,7 @@
 ## NFT Front End Tech Stack:
 
+tailwindcss postcss autoprefixer
+
 React + Tailwand css + react icon+ context+ MetaMask + ehters(fetch,ajax,axios)
 
 ```
@@ -14,6 +16,22 @@ Context---> tailwand --> other
 Component---> relationship between component --> props -->
 
 get the logic of code 
+
+
+
+find the cra version from react-scripts in package.json, then choose the tutorial to install the tailwand
+
+
+
+Create-react-app 5.0
+
+Create-react-app 4.0
+
+
+
+[How do I check the create-react-app version that my app used?](https://www.reddit.com/r/reactjs/comments/hm6fum/how_do_i_check_the_createreactapp_version_that_my/)
+
+[在react脚手架中使用tailwind css](https://juejin.cn/post/7043714956516130846#heading-2)
 
 ## Feature highlight
 

@@ -20,6 +20,7 @@ const getEthereumContract = () => {
 }
 export const TransactionsProvider = ({ children }) => {
     const [currentAccount, setCurrentAccount] = useState(null);
+    const [formData, setFormData] = useState({ addressTo: "", amount: "", keyword: "", message: "" })
     const checkWalletIsConnected = async () => {
         // 1.check if there is metamask
         const { ethereum } = window;
@@ -38,6 +39,7 @@ export const TransactionsProvider = ({ children }) => {
 
         } catch (error) {
             console.log(error)
+            throw new Error("no ethereum Object")
         }
 
 
@@ -64,7 +66,12 @@ export const TransactionsProvider = ({ children }) => {
             setCurrentAccount(account)
         } catch (error) {
             console.log(error)
+            throw new Error("no ethereum Object")
         }
+    }
+
+    const handleChange = () => {
+      
     }
     useEffect(() => {
         checkWalletIsConnected();
