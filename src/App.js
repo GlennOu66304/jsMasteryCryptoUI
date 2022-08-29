@@ -46,24 +46,36 @@ function App() {
     )
   }
 
-  const { connectWallet, currentAccount } = useContext(TransactionsContext)
+  const { connectWallet, currentAccount, sendTransaction } = useContext(TransactionsContext)
 
   const Form = () => {
-    const [email, setEmail] = useState('')
-    const [name, setName] = useState('')
+    const [addressTo, setAddressTo] = useState('')
+    const [amount, setAmount] = useState(0)
+    const [message, setMessage] = useState('')
+    const [keyword, setKeyword] = useState('')
 
     const handleSubmit = (event) => {
+
+      const formData = {
+        addressTo,
+        amount,
+        keyword,
+        message
+      }
       event.preventDefault();
-      console.log(name, email)
+      // console.log(formData)
+
+      if (!addressTo || !amount || !message || !keyword) return;
+
+      sendTransaction(formData)
     }
     return (
       <div>
         <form onSubmit={handleSubmit} >
+          {/* AddressTo */}
           <div className="form-group">
-            <label htmlFor="nameImput" className='form-label inline-block mb-2 text-gray-700'>Name</label>
-            <input type="text" name="name" value={name} onChange={(e) => {
-              setName(e.target.value)
-            }} className="form-control
+            <label htmlFor="AddressToImput" className='form-label inline-block mb-2 text-gray-700'>AddressTo</label>
+            <input type="text" name="AddressTo" value={addressTo} onChange={e => setAddressTo(e.target.value)} className="form-control
             block
             w-full
             px-3
@@ -77,13 +89,12 @@ function App() {
             transition
             ease-in-out
             m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="nameImput" placeholder="Name" />
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="AddressToImput" placeholder="AddressTo" />
           </div>
+          {/* Amount */}
           <div className="form-group">
-            <label htmlFor="emailImput" className='form-label inline-block mb-2 text-gray-700'>Email</label>
-            <input name="email" type="email" value={email} onChange={(e) => {
-              setEmail(e.target.value)
-            }} className="form-control
+            <label htmlFor="amountlImput" className='form-label inline-block mb-2 text-gray-700'>Amount</label>
+            <input name="amount" type="text" value={amount} onChange={e => setAmount(e.target.value)} className="form-control
             block
             w-full
             px-3
@@ -97,7 +108,45 @@ function App() {
             transition
             ease-in-out
             m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="emailImput" placeholder="email@domain.com" />
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="amountImput" placeholder="amount" />
+          </div>
+          {/* Keyword */}
+          <div className="form-group">
+            <label htmlFor="keywordImput" className='form-label inline-block mb-2 text-gray-700'>Keyword</label>
+            <input type="text" name="keyword" value={keyword} onChange={e => setKeyword(e.target.value)} className="form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="keywordImput" placeholder="Keyword" />
+          </div>
+          {/* Message */}
+          <div className="form-group">
+            <label htmlFor="messageImput" className='form-label inline-block mb-2 text-gray-700'>Message</label>
+            <input name="message" type="text" value={message} onChange={e => setMessage(e.target.value)} className="form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="messageImput" placeholder="Message" />
           </div>
           <input type="submit" value="Submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" />
         </form>
